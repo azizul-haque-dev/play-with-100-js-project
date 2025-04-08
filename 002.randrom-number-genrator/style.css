@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.app-area {
+    background-color: purple;
+    width: 600px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #fff;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input {
+    width: 120px;
+    padding: .5rem;
+}
+.value {
+    border-bottom: 2px solid #f9f9f9;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+    color: orange;
+}
+
+.digit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+button.generate {
+    width: 250px;
+    padding: .5rem 1rem;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+input,button {
+    border-radius: .25rem;
+    border: none;
+}
