@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome checker</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #2da4d5;
+      }
+
+      section {
+        width: 300px;
+        text-align: center;
+        padding: 2rem 2rem 1rem;
+        background-color: #fff;
+        border-radius: 0.25rem;
+      }
+
+      .input {
+        background: #ccc;
+        width: 300px;
+        display: flex;
+        border-radius: 0.25rem;
+      }
+
+      input[type="text"] {
+        background: transparent;
+        border: navajowhite;
+        outline: none;
+        width: 100%;
+        padding-left: 0.5rem;
+      }
+
+      button {
+        border: navajowhite;
+        background-color: #0bd10b;
+        height: 100%;
+        padding: 0.75rem 1rem;
+        font-weight: bold;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+      .alert {
+        margin-top: 1.5rem;
+      }
+      p {
+        padding: 0.75rem;
+        background: #f12c2c;
+        font-weight: 600;
+        border-radius: 0.25rem;
+      }
+      p.danger {
+        color: wheat;
+      }
+
+      p.success {
+        background: #0bd10b;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h3>Count vowel form the value</h3>
+      <div class="input">
+        <input type="text" />
+        <button>Check</button>
+      </div>
+      <div class="alert"></div>
+    </section>
+
+    <script>
+      const alertParent = document.querySelector(".alert");
+      const btn = document.querySelector("button");
+      const input = document.querySelector("input");
+      btn.addEventListener("click", function () {
+        // create input value to lowercase
+        const inputVal = input.value.toLocaleLowerCase();
+        //  finding vowel through match medthod
+        const count = inputVal.match(/[aeiou]/g); // it is returning array of how many vowel has
+        alertParent.innerHTML = `Total vowel is ${count?.length}`;
+      });
+    </script>
+  </body>
+</html>
