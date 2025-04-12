@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2da4d5;
+}
+
+section {
+  width: 500px;
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+form {
+  background: #ccc;
+  width: 300px;
+  display: flex;
+  border-radius: 0.25rem;
+}
+
+input[type="text"] {
+  background: transparent;
+  border: navajowhite;
+  outline: none;
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+.addbtn {
+  background-color: #0bd10b;
+  height: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+.alert {
+  margin-top: 1.5rem;
+}
+p {
+  padding: 0.75rem;
+  background: #f12c2c;
+  font-weight: 600;
+  border-radius: 0.25rem;
+}
+p.danger {
+  color: wheat;
+}
+h3 {
+  color: green;
+  letter-spacing: 1.3px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+p.success {
+  background: #0bd10b;
+}
+.list {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+}
+.btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit {
+  color: green;
+  font-size: 16px;
+  cursor: pointer;
+}
+.delete {
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
