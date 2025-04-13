@@ -103,4 +103,5 @@ function resetState() {
   isEditing = false;
   addButton.textContent = "Add Item";
   inputField.value = "";
+  inputField.focus();
 }
