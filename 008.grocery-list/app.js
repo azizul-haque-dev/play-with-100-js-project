@@ -1,5 +1,5 @@
 const groceryListContainer = document.querySelector(".list-container");
-const addButton = document.querySelector("input");
+const addButton = document.querySelector(".add-btn");
 
 const inputField = document.querySelector("input");
 const form = document.querySelector("form");
