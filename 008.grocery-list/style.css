@@ -55,7 +55,12 @@ button {
   font-size: 12px;
 }
 .alert {
-  margin-top: 1.5rem;
+  font-size: 14px;
+  width: 200px;
+  color: #fff;
+}
+.add-btn p {
+  color: inherit;
 }
 p {
   padding: 0.75rem;
@@ -64,7 +69,7 @@ p {
   border-radius: 0.25rem;
 }
 p.danger {
-  color: wheat;
+  background-color: red;
 }
 h3 {
   color: green;

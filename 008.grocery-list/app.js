@@ -1,6 +1,6 @@
 const groceryListContainer = document.querySelector(".list-container");
 const addButton = document.querySelector(".add-btn");
-
+const alertParent = document.querySelector(".alert");
 const inputField = document.querySelector("input");
 const form = document.querySelector("form");
 let isEditing = false;
@@ -23,10 +23,12 @@ form.addEventListener("submit", function (e) {
   if (value && !isEditing) {
     addGroceryItem(value);
     inputField.value = "";
+    giveAlert("success", "Item Added");
   } else if (value && isEditing) {
     updateGroceryItem(value);
   } else {
-    alert("Please enter an item!");
+    giveAlert("danger", "Blank input is not accepted");
+    return;
   }
   // come back to default state
   resetState();
@@ -69,6 +71,7 @@ function createGroceryItemElement(item) {
       saveGroceryItemsToLocalStorage();
       const target = e.target.closest("ul");
       groceryListContainer.removeChild(target);
+      giveAlert("danger", "Item removed");
     });
   // edit event listener
   element.querySelector(".edit-button").addEventListener("click", function (e) {
@@ -91,6 +94,7 @@ function updateGroceryItem(updatedValue) {
   saveGroceryItemsToLocalStorage();
   const groceryItem = document.querySelector(`ul[data-id='${editingItemId}']`);
   if (groceryItem) groceryItem.querySelector("li").innerHTML = updatedValue;
+  giveAlert("success", "Item updated");
 }
 
 // set item to localStorage
@@ -104,4 +108,13 @@ function resetState() {
   addButton.textContent = "Add Item";
   inputField.value = "";
   inputField.focus();
+}
+function giveAlert(className, msg) {
+  let element = document.createElement("p");
+  element.classList.add(className);
+  element.innerHTML = msg;
+  alertParent.appendChild(element);
+  setTimeout(() => {
+    alertParent.innerHTML = "";
+  }, 1000);
 }
