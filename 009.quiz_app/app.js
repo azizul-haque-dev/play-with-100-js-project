@@ -2,9 +2,13 @@ const quizContiner = document.querySelector(".quiz-container");
 const subtitle = document.querySelector(".subtitle");
 const quizTitle = document.querySelector(".quiz-title");
 const answer = document.querySelector(".answer");
+const startBtn = document.querySelector(".start");
+const nextBtn = document.querySelector(".next");
+const container = document.querySelector(".container");
 
 let quiz = 0;
 let score = 0;
+
 const questions = [
   {
     question: "What does HTML stand for?",
@@ -24,37 +28,62 @@ const questions = [
 ];
 
 function loadQuiz() {
-  let showQuiz = questions[quiz];
+  const showQuiz = questions[quiz];
   quizTitle.innerHTML = showQuiz.question;
+  subtitle.innerHTML = `Your score is ${score}`;
+  answer.innerHTML = ""; // Clear previous answers
+  nextBtn.disabled = true;
+
   showQuiz.answers.forEach((item, i) => {
     const btn = document.createElement("button");
-    const attr = document.createAttribute("data-id");
-    attr.value = i;
-    btn.setAttributeNode(attr);
+    btn.classList.add("btn");
+    btn.setAttribute("data-id", i);
     btn.textContent = item;
     answer.appendChild(btn);
   });
+
+  getAnswer();
 }
-loadQuiz();
-getAnswer();
 
 function getAnswer() {
-  const allBtn = document.querySelectorAll("button");
+  const allBtn = document.querySelectorAll(".btn");
+  let answered = false;
 
-  allBtn.forEach((btn, i) => {
+  allBtn.forEach((btn) => {
     btn.addEventListener("click", function (e) {
+      if (answered) return;
+
       const data = e.target.dataset.id;
-      //   answer.innerHTML = "";
+
       if (Number(data) === questions[quiz].correct) {
-        console.log(allBtn[data]);
-        allBtn[data].style.backgroundColor = "green";
-        getAnswer();
+        btn.classList.add("success");
+        score++;
       } else {
-        allBtn[questions[quiz].correct].style.backgroundColor = "green";
-        allBtn[data].style.backgroundColor = "red";
+        btn.classList.add("danger");
+        allBtn[questions[quiz].correct].classList.add("success");
       }
+
+      nextBtn.disabled = false;
+      answered = true;
     });
   });
 }
 
-console.log({ quiz, score });
+startBtn.addEventListener("click", function () {
+  startBtn.classList.add("none");
+  nextBtn.classList.remove("none");
+  container.style.backgroundColor = "#fff";
+  loadQuiz();
+});
+
+nextBtn.addEventListener("click", function () {
+  quiz++;
+  if (quiz < questions.length) {
+    loadQuiz();
+  } else {
+    quizTitle.innerHTML = "Quiz Completed!";
+    subtitle.innerHTML = `Your final score is ${score} / ${questions.length}`;
+    answer.innerHTML = "";
+    nextBtn.classList.add("none");
+  }
+});
