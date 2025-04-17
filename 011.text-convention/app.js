@@ -1,37 +1,45 @@
 const form = document.querySelector("form");
 const textArea = document.querySelector("textarea");
 
-// form.addEventListener('submit',function(e){
-//             e.preventDefault()
+// textArea.addEventListener("input", function () {
+//   let value = textArea.value.split("");
 
-// })
-textArea.addEventListener("keydown", function (e) {
- 
-  if (e.key === " " || e.key === "Enter") {
-    e.preventDefault();
+//   // Capitalize the very first character if it is a letter
+//   if (/[a-zA-Z]/.test(value[0])) {
+//     value[0] = value[0].toUpperCase();
+//   }
 
-    let text = textArea.value.trim().split(/[.!?]/);
+//   // Loop through the entire text
+//   for (let i = 0; i < value.length; i++) {
+//     if (value[i] === ".") {
+//       // Look ahead for the next alphabet character (skip spaces)
+//       let j = i + 1;
+//       while (j < value.length && value[j] === " ") {
+//         j++; // Skip spaces
+//       }
 
-    if (text.length === 1) {
-       const res = text[0];
-    let firstLater = res.charAt(0).toUpperCase();
-    let newVal = firstLater + res.split("").slice(1).join("");
-      textArea.value = newVal.trim();
-        textArea.value = `${newVal} `;
+//       if (j < value.length && /[a-zA-Z]/.test(value[j])) {
+//         value[j] = value[j].toUpperCase();
+//       }
+//     }
+//   }
+// });
+
+textArea.addEventListener("input", function () {
+  let value = textArea.value.split("");
+  let result = [];
+  let capitalize = true;
+
+  for (char of value) {
+    if (capitalize && /[a-zA-Z]/.test(char)) {
+      result.push(char.toUpperCase());
+      capitalize = false;
+    } else {
+      result.push(char);
     }
-    if(text.length > 1){
-      const res = text[text.length - 1];
-      //  let firstLater = res[res.length-1].charAt(0).toUpperCase();
-       console.log(res);
-       
+    if (char === "." || char === "!" || char === "?") {
+      capitalize = true;
     }
-   
-//      let res = text.join().split(' ')
-//      console.log(res[res.length-1].charAt(0))
-//      let firstLater = res[res.length-1].charAt(0).toUpperCase();
-//  console.log({firstLater}, '27')
-//  let newVal= firstLater + res.split("").slice(1).join("");
-//  textArea.value = (e.key === ' ' ? ' ' : '\n') + newVal;
-   
   }
+  textArea.value = result.join("");
 });
