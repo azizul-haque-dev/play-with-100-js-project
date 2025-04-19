@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors Game</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 200px;
+      }
+
+      select#userChoice {
+        padding: 0.5rem;
+      }
+
+      button {
+        border: none;
+        padding: 0.5rem 0.75rem;
+        margin-top: 0.5rem;
+        border-radius: 0.25rem;
+        background: #04c104;
+        color: #fff;
+        font-size: 13px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h3>Select Your Choice</h3>
+      <select id="userChoice">
+        <option value="">Select one</option>
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+      </select>
+      <div class="result">
+        <!-- <p>Hurray! You Wins.</p>
+        <button>Play Again</button> -->
+      </div>
+    </section>
+    <script>
+      const userChoiceSelect = document.querySelector("#userChoice");
+      const resultEl = document.querySelector(".result");
+      let result;
+
+      userChoiceSelect.addEventListener("change", function () {
+        const userChoice = userChoiceSelect.value;
+        console.log("User choice:", userChoice);
+
+        resultEl.innerHTML = "";
+
+        if (!userChoice) {
+          return;
+        }
+
+        const arr = ["rock", "paper", "scissors"];
+        const randomNum = Math.floor(Math.random() * 3);
+        console.log("Random number:", randomNum);
+
+        const computerChoice = arr[randomNum];
+        console.log("Computer choice:", computerChoice);
+
+        if (
+          (userChoice === "paper" && computerChoice === "rock") ||
+          (userChoice === "scissors" && computerChoice === "paper") ||
+          (userChoice === "rock" && computerChoice === "scissors")
+        ) {
+          result = `Hurray! You win. You selected ${userChoice} and the computer selected ${computerChoice}.`;
+        } else if (
+          (computerChoice === "paper" && userChoice === "rock") ||
+          (computerChoice === "scissors" && userChoice === "paper") ||
+          (computerChoice === "rock" && userChoice === "scissors")
+        ) {
+          result = `Computer wins. You selected ${userChoice} and the computer selected ${computerChoice}.`;
+        } else {
+          result = `It's a draw! You both selected ${userChoice}.`;
+        }
+
+        resultEl.innerHTML = `<p>${result}</p>`;
+      });
+    </script>
+  </body>
+</html>
