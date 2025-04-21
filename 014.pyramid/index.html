@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piramid</title>
+</head>
+<body>
+    <section></section>
+    <script>
+  
+        for (let index = 1; index <= 6; index++) {
+         let sum=''
+            for(let j = 1; j <=6; j++ ){
+                sum+= '*'
+                  
+            }
+             console.log(sum)
+             /* output will be
+             ******
+             ******
+             ******
+             ******
+             ******
+             ****** 
+
+          end */
+           
+        }
+        console.log('second')
+         for (let index = 1; index <= 5; index++) {
+         let sum=''
+            for(let j = 1; j>=index; j++ ){
+                sum+= '*'
+                  
+            }
+             console.log(sum)
+             /* output will be
+             *
+             **
+             ***
+             ****
+             *****
+             ****** 
+             
+          end */
+           
+        }
+      
+    </script>
+</body>
+</html>
