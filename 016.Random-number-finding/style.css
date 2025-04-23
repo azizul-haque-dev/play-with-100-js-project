@@ -23,14 +23,17 @@ input[type="number"] {
   padding: 1rem;
 }
 
-p.danger {
+p {
   padding: 1rem;
-  background-color: red;
   color: white;
   font-size: 1.25rem;
   font-weight: 500;
   border-radius: 0.25rem;
 }
-p.success {
+
+.danger {
+  background-color: red;
+}
+.success {
   background-color: green;
 }
