@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File system</title>
+</head>
+<body>
+    <h1>file system in console
+    </h1>
+    <script>
+    const fileSystem = {
+  name: "root",
+  files: ["index.js", "style.css"],
+  folders: [
+    {
+      name: "src",
+      files: ["app.js"],
+      folders: [
+        {
+          name: "components",
+          files: ["Button.js"],
+          folders: []
+        }
+      ]
+    },
+    {
+      name: "assets",
+      files: ["logo.png"],
+      folders: []
+    }
+  ]
+};
+
+function loadFile(folder){
+    console.log(`📁 Folder: ${folder.name}`);
+
+    folder.files.forEach(file => {
+        console.log(`  📄 File: ${file}`);
+    });
+     folder.folders.forEach(innerFolder => {
+       loadFile(innerFolder)
+    });
+
+
+}
+loadFile(fileSystem)
+    </script>
+</body>
+</html>
